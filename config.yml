@@ -13,6 +13,10 @@ markup:
     hrefTargetBlank: true
     smartypants: false
 
+# routing
+permalinks:
+  entry: /entry/:slug/
+
 # menu
 menu:
   main:
