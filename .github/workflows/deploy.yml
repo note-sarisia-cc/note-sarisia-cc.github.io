@@ -1,0 +1,28 @@
+name: deploy to github pages
+on:
+  push:
+    branches:
+      - master
+    tags-ignore:
+      - "**"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: peaceiris/actions-hugo@v2
+      - run: hugo
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          external_repository: note-sarisia-cc/note-sarisia-cc.github.io
+          publish_branch: master
+          publish_dir: ./public
+          cname: note.sarisia.cc
+      - uses: sarisia/actions-status-discord@v1
+        if: always()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          status: ${{ job.status }}
+          title: "update note.sarisia.cc"
