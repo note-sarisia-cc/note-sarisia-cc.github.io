@@ -1,4 +1,34 @@
-baseURL: "https://note.sarisia.cc"
+# hugo
+baseURL: "https://note.sarisia.cc/"
 languageCode: "en-us"
-title: "note.sarisia.cc"
+title: "NOTE.SARISIA.CC"
 theme: zozo
+hasCJKLanguage: true
+googleAnalytics: "UA-99257943-2"
+pygmentsUseClasses: true
+pygmentsCodeFences: true
+markup:
+  defaultMarkdownHandler: blackfriday
+  blackFriday:
+    hrefTargetBlank: true
+    smartypants: false
+
+# menu
+menu:
+  main:
+    - name: POSTS
+      weight: 10
+      url: "/entry/"
+    - name: TAGS
+      weight: 20
+      url: "/tags/"
+    - name: SARISIA.CC
+      weight: 30
+      url: "https://sarisia.cc/"
+
+# theme: zozo
+params:
+  enableSummary: true
+social:
+  github: "https://github.com/sarisia"
+  twitter: "https://twitter.com/A1ces"
