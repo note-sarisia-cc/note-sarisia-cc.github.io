@@ -2,7 +2,7 @@
 title: Discord に GitHub Actions の結果を通知するアクションを作った
 date: 2020-07-15
 slug: actions-status-discord
-tags: [Discord, GitHub]
+tags: [Discord, GitHub Actions]
 ---
 
 # TL;DR
