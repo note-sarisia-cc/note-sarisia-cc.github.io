@@ -7,11 +7,6 @@ hasCJKLanguage: true
 googleAnalytics: "UA-99257943-2"
 pygmentsUseClasses: true
 pygmentsCodeFences: true
-markup:
-  defaultMarkdownHandler: blackfriday
-  blackFriday:
-    hrefTargetBlank: true
-    smartypants: false
 
 # routing
 permalinks:
