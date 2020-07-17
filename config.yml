@@ -5,6 +5,7 @@ title: "NOTE.SARISIA.CC"
 theme: zozo
 hasCJKLanguage: true
 googleAnalytics: "UA-99257943-2"
+enableRobotsTXT: true
 pygmentsUseClasses: true
 pygmentsCodeFences: true
 
