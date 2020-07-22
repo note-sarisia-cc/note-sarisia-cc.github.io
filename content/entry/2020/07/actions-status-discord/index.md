@@ -123,8 +123,6 @@ README により詳細が書いてあります:
 
 是非使ってみてください！
 
----
-
 [^1]: Docker アクションはイメージのプルとビルドが必要なので遅い: [https://docs.github.com/en/actions/creating-actions/about-actions#types-of-actions](https://docs.github.com/en/actions/creating-actions/about-actions#types-of-actions)
 
 [^2]: 本当は去年リリースしていたが全然発見されず悲しくなったのでこの記事を書いた
