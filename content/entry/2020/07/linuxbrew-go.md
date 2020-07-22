@@ -34,7 +34,7 @@ Linuxbrew で入れた Go がバイナリのインタプリタ (ダイナミッ�
 
 Go コンパイラは、デフォルトでスタティックリンクされたバイナリを吐き出すが、 `cgo` を用いたコードが含まれているとダイナミックリンクされたバイナリを出力するらしい[^1]。
 
-今回は、AWS Lambda で動かすために `[github.com/aws/aws-lambda-go/lambda](http://github.com/aws/aws-lambda-go/lambda)` パッケージを用いていたが、このパッケージは `net` パッケージに依存しており、 `net` パッケージが `cgo` を利用しているために吐き出されるバイナリがダイナミックリンクされたものになったと考えられる。
+今回は、AWS Lambda で動かすために [`github.com/aws/aws-lambda-go/lambda`](http://github.com/aws/aws-lambda-go/lambda) パッケージを用いていたが、このパッケージは `net` パッケージに依存しており、 `net` パッケージが `cgo` を利用しているために吐き出されるバイナリがダイナミックリンクされたものになったと考えられる。
 
 ## Linuxbrew の Go
 
