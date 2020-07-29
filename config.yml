@@ -1,7 +1,7 @@
 # hugo
 baseURL: "https://note.sarisia.cc/"
 languageCode: "en-us"
-title: "NOTE.SARISIA.CC"
+title: "loop.run_forever()"
 theme: zozo
 hasCJKLanguage: true
 googleAnalytics: "UA-99257943-2"

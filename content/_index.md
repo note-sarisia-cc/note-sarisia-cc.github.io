@@ -1,5 +1,5 @@
 ---
 author: Sarisia
-title: "NOTE.SARISIA.CC"
-description: "Fresh from @A1ces"
+title: "loop.run_forever()"
+description: ""
 ---
