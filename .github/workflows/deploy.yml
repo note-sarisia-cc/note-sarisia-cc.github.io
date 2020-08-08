@@ -28,3 +28,4 @@ jobs:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           status: ${{ job.status }}
           title: "update note.sarisia.cc"
+          description: "https://note.sarisia.cc"
