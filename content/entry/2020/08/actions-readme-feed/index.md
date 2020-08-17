@@ -25,7 +25,7 @@ GitHub で, 生やした草やリポジトリに加え, README でアピール�
 
 基本的にはマーケットプレイスのページに書いてある通りです.
 
-`[README.md](http://readme.md)` の記事一覧を挿入したい箇所にフラグコメントを突っ込みます:
+`README.md` の記事一覧を挿入したい箇所にフラグコメントを突っ込みます:
 
 ```markdown
 ### Recent Blog Posts
