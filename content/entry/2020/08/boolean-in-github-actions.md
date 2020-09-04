@@ -2,6 +2,7 @@
 title: GitHub Actions で真偽値を正しく扱う
 date: 2020-09-03
 slug: boolean-in-github-actions
+tags: [ GitHub, "GitHub Actions" ]
 ---
 
 # TL;DR
