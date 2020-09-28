@@ -5,6 +5,12 @@ slug: github-actions-icu
 tags: [GitHub, "GitHub Actions", "Node.js"]
 ---
 
+### 2020/09/27 追記
+
+この記事で紹介したワークアラウンドを自動化するアクションを作りました:
+
+[GitHub Actions ランタイムを多言語化するアクションを作った](https://note.sarisia.cc/entry/github-actions-setup-icu)
+
 # TL;DR
 
 GitHub Actions の JavaScript アクションは `small-icu` オプションでビルドされた Node.js 12 で走るので `ICU` 依存の関数がまともな結果を返さない. ワークアラウンドはあるが, ユーザーの操作が必要.
