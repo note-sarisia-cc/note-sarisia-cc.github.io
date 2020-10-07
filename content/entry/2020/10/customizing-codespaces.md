@@ -1,5 +1,5 @@
 ---
-title: Codespaces (devcontainer) カスタマイズのコツ
+title: GitHub Codespaces カスタマイズのコツ
 date: 2020-10-07
 slug: customizing-codespaces
 tags: [Codespaces, GitHub, VSCode, devcontainer]
