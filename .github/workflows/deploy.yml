@@ -14,7 +14,7 @@ jobs:
         with:
           submodules: true
       - uses: peaceiris/actions-hugo@v2
-      - run: hugo --buildFuture
+      - run: make
       - uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.DEPLOY_SECRET }}
