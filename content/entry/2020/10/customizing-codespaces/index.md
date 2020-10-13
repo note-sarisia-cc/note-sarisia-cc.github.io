@@ -5,6 +5,8 @@ slug: customizing-codespaces
 tags: [Codespaces, GitHub, VSCode, devcontainer]
 ---
 
+2020/10/13 追記: Codespaces 上で dotfiles の挙動が変更できることを追記
+
 [GitHub Codespaces](https://github.com/features/codespaces) は, ブラウザから利用できる Visual Studio Code をワンクリックで起動してくれる最高のクラウド開発環境サービスです. 現在はプライベートベータ版が提供されています.
 
 Codespaces は, 開発環境のカスタマイズの自由度が非常に高いことが特徴です. devcontainer を用いた環境定義ができる他, dotfiles リポジトリの自動適用や VSCode Settings Sync の設定など, コンテナ環境からエディタの設定まで, ほぼすべてをカスタマイズすることができます.
@@ -60,7 +62,18 @@ Codespaces は, デフォルトで **ユーザの `dotfiles` リポジトリを�
 
 もし, 今までに `dotfiles` を GitHub 上で管理していた場合, それらは意図せず Codespaces の初期化に利用される場合があります.
 
-## 対処法: `$CODESPACES` 環境変数を用いる
+## 対処法1. Codespaces 上で設定する
+
+2020/10/13追記
+
+起動した Codespaces 上の VSCode の設定に, Dotfiles 関連の設定があるようなので, それを使うと
+制御できるかもしれません (試していません).
+
+![dotfiles-configure](dotfiles-configure.png)
+
+追記終
+
+## 対処法2. : `$CODESPACES` 環境変数を用いる
 
 最も手っ取り早い方法はインストールスクリプトの名前を変更してしまうことですが, 以前より用いている物にあまり手を入れたくありません. この場合, インストールスクリプトの中で `$CODESPACES` 環境変数によって動作を変更することができます.
 
