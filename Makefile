@@ -4,4 +4,4 @@ all:
 
 .PHONY: server
 server:
-	hugo server -DF
+	hugo server --buildDrafts --buildFuture
