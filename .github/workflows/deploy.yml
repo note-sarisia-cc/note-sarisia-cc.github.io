@@ -2,10 +2,10 @@ name: deploy to github pages
 on:
   workflow_dispatch:
     inputs:
-      hugo-build-mode:
-        description: see Makefile
+      hugo-build-future:
+        description: Build future (yes or no)
         required: false
-        default: 'future'
+        default: 'no'
   schedule:
     - cron: '0 15 * * *' # JST (UTC+9)
   push:
@@ -24,7 +24,11 @@ jobs:
       - uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: '0.79.0'
-      - run: make ${{ github.event.inputs.hugo-build-mode }}
+      - name: determine build mode
+        id: hugo-build-mode
+        if: github.event.inputs.hugo-build-future == "yes"
+        run: echo '::set-output name=value::future'
+      - run: make ${{ steps.hugo-build-mode.outputs.value }}
       - uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.DEPLOY_SECRET }}
