@@ -26,7 +26,7 @@ jobs:
           hugo-version: '0.79.0'
       - name: determine build mode
         id: hugo-build-mode
-        if: github.event.inputs.hugo-build-future == "yes"
+        if: github.event.inputs.hugo-build-future == 'yes'
         run: echo '::set-output name=value::future'
       - run: make ${{ steps.hugo-build-mode.outputs.value }}
       - uses: peaceiris/actions-gh-pages@v3
