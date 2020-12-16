@@ -1,6 +1,9 @@
-.PHONY: all
-all:
-	hugo -F
+.PHONY: default
+default:
+	hugo
+
+future:
+	hugo --buildFuture
 
 .PHONY: server
 server:

@@ -1,6 +1,11 @@
 name: deploy to github pages
 on:
   workflow_dispatch:
+    inputs:
+      hugo-build-mode:
+        description: see Makefile
+        required: false
+        default: 'future'
   schedule:
     - cron: '0 15 * * *' # JST (UTC+9)
   push:
@@ -19,7 +24,7 @@ jobs:
       - uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: '0.79.0'
-      - run: make
+      - run: make ${{ github.event.inputs.hugo-build-mode }}
       - uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.DEPLOY_SECRET }}
