@@ -1,8 +1,8 @@
 ---
 title: Slash CommandsでサーバレスなDiscordアプリを作る
-date: Jan 3, 2021
+date: 2021-01-03
 slug: discord-slash-commands
-tags: AWS, Discord, Lambda, Python
+tags: [AWS, Discord, Lambda, Python]
 ---
 
 あけましておめでとうございます.
@@ -71,7 +71,7 @@ Lambda のランタイムは `python3.8` です. また, デプロイパッケ�
 
 ソースコードは以下です:
 
-[](https://github.com/sarisia/discord-slash-commands-helloworld)
+[sarisia/discord-slash-commands-helloworld: Hello Discord Slash Commands!](https://github.com/sarisia/discord-slash-commands-helloworld)
 
 ## 実装
 
@@ -83,7 +83,9 @@ Lambda のランタイムは `python3.8` です. また, デプロイパッケ�
 
 ```python
 def callback(event: dict, context: dict):
-    headers: dict = event['headers']
+    # API Gateway has weird case conversion, so we need to make them lowercase.
+    # See https://github.com/aws/aws-sam-cli/issues/1860
+    headers: dict = { k.lower(): v for k, v in event['headers'].items() }
     rawBody: str = event['body']
 
     # validate request
@@ -99,13 +101,20 @@ def callback(event: dict, context: dict):
         }
 ```
 
-Discord からのリクエストには `X-Signature-Ed25519` と `X-Signature-Timestamp` の2つのヘッダが含まれています. これらを用いて, リクエストの署名を検証します. 以下は `verify()` の中身です:
+Discord からのリクエストには `X-Signature-Ed25519` と `X-Signature-Timestamp` の2つのヘッダが含まれています. これらを用いて, リクエストの署名を検証します.
+
+検証には `pynacl` (`libsodium` の Python バインディング) を利用します:
 
 ```python
 from nacl.signing import VerifyKey
 
-verify_key = VerifyKey(bytes.fromhex(APPLICATION_PUBLIC_KEY)
+APPLICATION_PUBLIC_KEY = os.getenv('APPLICATION_PUBLIC_KEY')
+verify_key = VerifyKey(bytes.fromhex(APPLICATION_PUBLIC_KEY))
+```
 
+`verify()` で実際の検証をします:
+
+```python
 def verify(signature: str, timestamp: str, body: str) -> bool:
     try:
         verify_key.verify(f"{timestamp}{body}".encode(), bytes.fromhex(signature))
@@ -232,7 +241,7 @@ def registerCommands():
                 {
                     "type": 6, # ApplicationCommandOptionType.USER
                     "name": "user",
-                    "description": "挨拶する相手",
+                    "description": "Who to say hello?",
                     "required": False
                 }
             ]
@@ -292,7 +301,7 @@ Discord アプリの動作には, 以下の情報が必要です:
 
 ### `application.commands` スコープを取得する
 
-冒頭で述べたとおり, Slash Commands は `bot` スコープだけでは動作せず, 新たに `application.commands` スコープが必要です. 以下の URL を叩いてアプリケーションのギルドでのスコープを更新しましょう. `**<YOUR_CLIENT_ID_HERE>` を Application ID で置き換えてください！**
+冒頭で述べたとおり, Slash Commands は `bot` スコープだけでは動作せず, 新たに `application.commands` スコープが必要です. 以下の URL を叩いてアプリケーションのギルドでのスコープを更新しましょう. **`<YOUR_CLIENT_ID_HERE>` を Application ID で置き換えてください！**
 
 `https://discord.com/api/oauth2/authorize?client_id=<YOUR_CLIENT_ID_HERE>&scope=applications.commands`
 
