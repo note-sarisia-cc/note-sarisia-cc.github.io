@@ -1,2 +1,4 @@
 /.vscode/settings.json
 /public
+
+.hugo_build.lock
