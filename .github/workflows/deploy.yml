@@ -44,6 +44,7 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     permissions:
       id-token: write
+      pages: write
     steps:
       - uses: actions/deploy-pages@v1
         id: deploy
