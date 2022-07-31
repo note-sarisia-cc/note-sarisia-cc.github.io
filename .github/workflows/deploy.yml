@@ -1,13 +1,10 @@
 name: deploy to github pages
+
 on:
   workflow_dispatch:
   schedule:
     - cron: '0 15 * * *' # JST (UTC+9)
   push:
-    branches:
-      - master
-    tags-ignore:
-      - "**"
 
 jobs:
   build:
@@ -45,6 +42,8 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
+    permissions:
+      id-token: write
     steps:
       - uses: actions/deploy-pages@v1
         id: deploy
